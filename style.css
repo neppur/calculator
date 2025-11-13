@@ -93,9 +93,10 @@ button{
     background-color: var(--color--600);
     margin-bottom: 16px;
     height: 96px;
+    overflow: hidden;
 }
 
-.result{
+.result, .result-start{
     font-size: 64px;
     line-height: 0px;
     display: flex;
