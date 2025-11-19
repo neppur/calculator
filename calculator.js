@@ -8,18 +8,52 @@ result.textContent = ""
 
 let resultStart = document.querySelector(".result-start");
 
-const buttons = document.querySelectorAll(".numbers button");
-buttons.forEach(button => {
-    button.addEventListener("click", () => {
+const numbBtns = document.querySelectorAll(".numbers button");
+numbBtns.forEach(numbBtn => {
+    numbBtn.addEventListener("click", () => {
         resultStart.remove();
 
-        if (button.textContent == "clear"){
+        if (numbBtn.textContent == "clear"){
             location.reload();
         } else {
-            const value = button.textContent.trim()
+            const value = numbBtn.textContent.trim()
             result.append(value);}
     })
 });
+
+const operatorBtns = document.querySelectorAll(".operator");
+operatorBtns.forEach(operatorBtn => {
+    operatorBtn.addEventListener("click", () => {
+        if(operatorBtn.classList.contains("divide") == true){
+            const operatorText = document.createElement("div")
+            operator.textContent = "÷";
+            result.append(operatorText);
+
+        } else if(operatorBtn.classList.contains("multiply") == true){
+            const operatorText = document.createElement("div")
+            operator.textContent = "×";
+            result.append(operatorText);
+
+    }   else if(operatorBtn.classList.contains("sub") == true){
+            const operatorText = document.createElement("div")
+            operator.textContent = "–";
+            result.append(operatorText);
+
+    } else if (operatorBtn.classList.contains("add") == true) {
+            const operatorText = document.createElement("div")
+            operator.textContent = "+";
+            result.append(operatorText);
+    }})
+
+})
+
+const equals = document.querySelector(".equals");
+equals.addEventListener("click", () =>{
+    operate();
+})
+
+
+
 
 // Basic operations
 function add(x, y) {
@@ -45,12 +79,12 @@ function divide(x, y){
 // Calculation
 function operate(numberOne, operator, numberTwo){
     if(operator = "+"){
-        add();
+        add(numberOne, numberTwo);
     } else if (operator = "-"){
-        substract();
+        substract(numberOne, numberTwo);
     } else if (operator = "*"){
-        multiply();
+        multiply(numberOne, numberTwo);
     } else if (operator = "/"){
-        divide()
+        divide(numberOne, numberTwo)
     }
 }
